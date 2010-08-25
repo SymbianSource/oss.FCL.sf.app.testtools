@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE SystemDefinition SYSTEM "sysdef_1_4_0.dtd" [
+  <!ENTITY layer_real_source_path "sf/app/testtools" >
+]>
+
+<SystemDefinition name="testtools" schema="1.4.0">
+  <systemModel>
+    <layer name="app_layer">
+      <module name="htiui">
+        <unit unitID="testtools.htiui" mrp="" bldFile="&layer_real_source_path;/htiui/group" name="htiui" />
+      </module>
+      <module name="stifui">
+        <unit unitID="testtools.stifui" mrp="" bldFile="&layer_real_source_path;/stifui/avkon/group" name="stifui" />
+      </module>
+    </layer>
+  </systemModel>
+</SystemDefinition>
