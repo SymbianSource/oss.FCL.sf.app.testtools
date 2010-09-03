@@ -33,12 +33,12 @@
 #include <SWInstApi.h>
 #include <swi/sisregistrysession.h>
 #include <swi/sisregistrypackage.h>
+#include <widgetregistryclient.h>
 #else
 #include <usif/sif/sif.h>
 #include <usif/scr/scr.h>    //RSoftwareComponentRegistry
 #endif
 #include <javaregistryincludes.h>
-#include <widgetregistryclient.h>
 
 using namespace Java;
 #if ( SYMBIAN_VERSION_SUPPORT >= SYMBIAN_4 )
@@ -49,6 +49,7 @@ _LIT8( KJadMIMEType, "text/vnd.sun.j2me.app-descriptor" );
 _LIT8( KJarMIMEType, "application/java-archive" );
 _LIT8( KJavaMIMEType, "application/java");
 _LIT8( KJarxMIMEType, "application/x-java-archive");
+_LIT8( KWidgetMime, "application/x-nokia-widget");
 #endif
 
 // CONSTANTS

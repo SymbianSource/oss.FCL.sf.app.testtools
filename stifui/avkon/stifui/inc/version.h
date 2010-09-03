@@ -20,9 +20,9 @@
 
 #define STIFUI_MAJOR_VERSION 7
 #define STIFUI_MINOR_VERSION 3
-#define STIFUI_BUILD_VERSION 37
+#define STIFUI_BUILD_VERSION 38
 
-#define STIFUI_REL_DATE "13th July 2010"
+#define STIFUI_REL_DATE "27th July 2010"
 
 #define TO_UNICODE(text) _L(text) 
 

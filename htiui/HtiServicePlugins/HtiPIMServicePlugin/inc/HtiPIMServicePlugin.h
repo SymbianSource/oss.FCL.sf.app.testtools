@@ -23,6 +23,7 @@
 // INCLUDES
 #include <HtiServicePluginInterface.h>
 #include <w32std.h>
+#include "../../../symbian_version.hrh"
 
 // CONSTANTS
 const TInt KPIMServiceUidValue = 0x10210CCD; // ECOM Implementation UID
@@ -30,7 +31,11 @@ const TUid KPIMServiceUid = { KPIMServiceUidValue };
 
 // FORWARD DECLARATIONS
 class CPIMHandler;
+
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
 class CHtiBookmarkHandler;
+#endif
+
 class CHtiSimDirHandler;
 // CLASS DECLARATION
 
@@ -100,7 +105,9 @@ class CHtiPIMServicePlugin : public CHTIServicePluginInterface
     private:
 
         CPIMHandler* iPimHandler;
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
         CHtiBookmarkHandler* iBookmarkHandler;
+#endif
         CHtiSimDirHandler* iSimDirHandler;
         };
 

@@ -17,6 +17,7 @@
 
 
 #include <platform_paths.hrh>
+#include "../../../symbian_version.hrh"
 
 TARGET          HtiMessagesServicePlugin.dll
 TARGETTYPE      PLUGIN
@@ -34,6 +35,9 @@ SOURCE          MessageMgmntHandler.cpp
 SOURCE          HtiIAPHandler.cpp
 SOURCE          HtiMailboxHandler.cpp
 SOURCE          HtiMsgSettingsHandler.cpp
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
+SOURCE          HtiNotificationHandler.cpp
+#endif
 
 USERINCLUDE     ../inc
 APP_LAYER_SYSTEMINCLUDE
@@ -61,6 +65,13 @@ LIBRARY         etelmm.lib
 LIBRARY         etext.lib
 LIBRARY         mmsserversettings.lib
 LIBRARY         flogger.lib
+
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
+// For CHtiNotificationHandler to create voice message notification
+LIBRARY         avkon.lib
+LIBRARY         aknnotify.lib
+LIBRARY         aknnotifyplugin.lib
+#endif
 
 SMPSAFE
 

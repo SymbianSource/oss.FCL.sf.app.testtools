@@ -22,6 +22,7 @@
 
 // INCLUDES
 #include <HtiServicePluginInterface.h>
+#include "../../../symbian_version.hrh"
 
 // CONSTANTS
 const TInt KHtiMessagesServiceUidValue = 0x10210CCF; // ECOM Implementation UID
@@ -32,6 +33,9 @@ class CMessageMgmntHandler;
 class CHtiIAPHandler;
 class CHtiMailboxHandler;
 class CHtiMsgSettingsHandler;
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
+class CHtiNotificationHandler;
+#endif
 
 // CLASS DECLARATION
 
@@ -74,6 +78,12 @@ public:
         ESetSmsSettings      = 0x42,
         ESetMmsSettings      = 0x45,
 
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
+        // NotificationHandler
+        ECreateVoiceMessageNotification = 0x50,
+        EClearAllNotifications          = 0x51,
+#endif
+        
         // only for response message
         EResultOk            = 0xFF,
         };
@@ -97,6 +107,9 @@ private:
     CHtiIAPHandler*         iIAPHandler;
     CHtiMailboxHandler*     iMailboxHandler;
     CHtiMsgSettingsHandler* iMsgSettingsHandler;
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
+    CHtiNotificationHandler* iNotificationHandler;
+#endif
     };
 
 #endif // CHTIMESSAGESSERVICEPLUGIN_H

@@ -19,14 +19,18 @@
 // INCLUDE FILES
 #include "HtiPIMServicePlugin.h"
 #include "PIMHandler.h"
+
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
 #include "HtiBookmarkHandler.h"
+#endif
+
 #include "HtiSimDirHandler.h"
 #include <HtiDispatcherInterface.h>
 #include <HtiLogging.h>
 
 // CONSTANTS
 _LIT8( KErrorMissingCommand, "Missing command" );
-
+_LIT8( KErrorUnrecognizedCommand, "Unrecognized command" );
 // ----------------------------------------------------------------------------
 // Create instance of concrete ECOM interface implementation
 CHtiPIMServicePlugin* CHtiPIMServicePlugin::NewL()
@@ -48,7 +52,9 @@ CHtiPIMServicePlugin::~CHtiPIMServicePlugin()
     {
     HTI_LOG_TEXT("CHtiPIMServicePlugin destroy");
     delete iPimHandler;
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
     delete iBookmarkHandler;
+#endif
     delete iSimDirHandler;
     }
 
@@ -91,7 +97,8 @@ void CHtiPIMServicePlugin::ProcessMessageL( const TDesC8& aMessage,
             }
         iSimDirHandler->ProcessMessageL( aMessage, aPriority );
         }
-    else
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
+    else if ( aCommand <= EDeleteBookmark)
         {
         if ( iBookmarkHandler == NULL )
             {
@@ -99,6 +106,12 @@ void CHtiPIMServicePlugin::ProcessMessageL( const TDesC8& aMessage,
             iBookmarkHandler->SetDispatcher( iDispatcher );
             }
         iBookmarkHandler->ProcessMessageL( aMessage, aPriority );
+        }
+#endif
+    else
+        {
+        User::LeaveIfError( iDispatcher->DispatchOutgoingErrorMessage(
+            KErrArgument, KErrorUnrecognizedCommand, KPIMServiceUid ) );
         }
 
     HTI_LOG_FUNC_OUT( "CHtiPIMServicePlugin::ProcessMessageL" );
@@ -112,11 +125,13 @@ TBool CHtiPIMServicePlugin::IsBusy()
         {
         return iPimHandler->IsBusy();
         }
-
+    
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
     if ( iBookmarkHandler )
         {
         return iBookmarkHandler->IsBusy();
         }
+#endif
     
     if( iSimDirHandler)
         {

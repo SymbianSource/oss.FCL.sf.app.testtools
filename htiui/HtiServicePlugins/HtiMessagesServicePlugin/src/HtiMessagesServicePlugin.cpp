@@ -22,6 +22,9 @@
 #include "HtiIAPHandler.h"
 #include "HtiMailboxHandler.h"
 #include "HtiMsgSettingsHandler.h"
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
+#include "HtiNotificationHandler.h"
+#endif
 
 #include <HtiDispatcherInterface.h>
 #include <HtiLogging.h>
@@ -54,6 +57,9 @@ CHtiMessagesServicePlugin::~CHtiMessagesServicePlugin()
     delete iIAPHandler;
     delete iMailboxHandler;
     delete iMsgSettingsHandler;
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
+    delete iNotificationHandler;
+#endif
     }
 
 // ----------------------------------------------------------------------------
@@ -116,6 +122,18 @@ void CHtiMessagesServicePlugin::ProcessMessageL( const TDesC8& aMessage,
             }
         iMsgSettingsHandler->ProcessMessageL( aMessage, aPriority );
         }
+
+#if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
+    else if ( command >= ECreateVoiceMessageNotification && command <= EClearAllNotifications)
+        {
+        if( !iNotificationHandler )
+            {
+            iNotificationHandler = CHtiNotificationHandler::NewL();
+            iNotificationHandler->SetDispatcher(iDispatcher);
+            }
+        iNotificationHandler->ProcessMessageL( aMessage, aPriority );
+        }
+#endif
 
     else
         {

@@ -1929,6 +1929,7 @@ void CHtiSysInfoServicePlugin::HandleBtPowerCommandL( const TDesC8& aMessage )
             {
             iDispatcher->DispatchOutgoingErrorMessage( KErrAccessDenied,
                 KErrDescrBtOnDenied, KSysInfoServiceUid );
+            CleanupStack::PopAndDestroy(); // btSettings
             return;
             }
 

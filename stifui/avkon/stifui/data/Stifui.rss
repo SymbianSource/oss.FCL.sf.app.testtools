@@ -27,8 +27,8 @@ NAME	STIF // 4 letter ID
 #include <avkon.rh>
 #include <avkon.mbg>
 #include <avkon.hrh>
-#include <CommonDialogs.hrh> // Enumerations of memory selection, file selection, save etc dialogs
-#include <CommonDialogs.rh> // Resource structures of memory selection, file selection, save etc dialogs
+//#include <CommonDialogs.hrh> // Enumerations of memory selection, file selection, save etc dialogs
+//#include <CommonDialogs.rh> // Resource structures of memory selection, file selection, save etc dialogs
 #if defined (__S60_)
     #include <data_caging_paths_strings.hrh>
 #endif
