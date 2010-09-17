@@ -45,13 +45,13 @@ LIBRARY     apmime.lib
 LIBRARY     ws32.lib
 #if ( SYMBIAN_VERSION_SUPPORT < SYMBIAN_4 )
 LIBRARY     swinstcli.lib
+LIBRARY     widgetregistryclient.lib
 #else
 LIBRARY     sif.lib       // USIF
 LIBRARY     scrclient.lib // SCR
 #endif
 LIBRARY     sisregistryclient.lib
 LIBRARY     javaregistryclient.lib
-LIBRARY     widgetregistryclient.lib
 LIBRARY     flogger.lib
 
 SMPSAFE

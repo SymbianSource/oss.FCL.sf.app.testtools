@@ -7,13 +7,13 @@
   <systemModel>
     <layer name="app_layer">
 			<module name="htiui">
-				<unit unitID="testtools.htiuiqt" mrp="" bldFile="&layer_real_source_path;/htiui" proFile="htiui.pro" name="htiui" />
+				<unit unitID="testtools.htiuiqt" mrp="" bldFile="&layer_real_source_path;/testconnuis/htiui" proFile="htiui.pro" name="htiui" />
 			</module>
       <module name="stifui">
-        <unit unitID="testtools.stifui" mrp="" bldFile="&layer_real_source_path;/stifui/avkon/group" name="stifui" />
+        <unit unitID="testtools.stifui" mrp="" bldFile="&layer_real_source_path;/testfwuis/stifui/avkon/group" name="stifui" />
       </module>
       <module name="sutui">
-        <unit unitID="testtools.sutui" mrp="" bldFile="&layer_real_source_path;/symbianunittestui/qt" proFile="symbianunittestqt.pro" name="sutui" />
+        <unit unitID="testtools.sutui" mrp="" bldFile="&layer_real_source_path;/testfwuis/symbianunittestui/qt" proFile="symbianunittestqt.pro" name="sutui" />
       </module>
     </layer>
   </systemModel>
