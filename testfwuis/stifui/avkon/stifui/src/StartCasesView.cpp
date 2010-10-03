@@ -333,7 +333,7 @@ void CStartCasesView::CheckListBoxSelectionsL( CEikListBox* aListBox )
 	{
 		for( i = 0; i < count; i++ )
 			{
-			selectedIndices.InsertInOrder( 
+			selectedIndices.InsertInOrderL( 
 			    (*aListBox->SelectionIndexes())[i] );
 			}
 	}

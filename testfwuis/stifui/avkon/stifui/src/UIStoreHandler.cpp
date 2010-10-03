@@ -134,6 +134,19 @@ void CUIStoreHandler::Update( CStartedTestCase* aTestCase, TInt aStatus )
 
     }
 
+TInt CUIStoreHandler::PopupMsg( const TDesC& /*aLine1*/, 
+                             const TDesC& /*aLine2*/, 
+                             TInt /*aTimeInSecs*/,
+                             TKeyCode& /*aKey*/,
+                             TRequestStatus& aStatus )
+    {
+    
+    TRequestStatus *status = &aStatus;
+    User::RequestComplete(status, 0);
+
+    return 0;
+    
+    }
 // ================= OTHER EXPORTED FUNCTIONS =================================
 // None
 

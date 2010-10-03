@@ -341,7 +341,7 @@ void CTestSetInsertMenuView::ShowInsertCasesDialogL()
     			{
     			for( i = 0; i < newCount; i++ )
 	    			{
-    				selectedIndices.InsertInOrder( (*newListBox->SelectionIndexes())[i] );
+    				selectedIndices.InsertInOrderL( (*newListBox->SelectionIndexes())[i] );
 		    		}	
     				
 	    		AddCasesToTestSet( selectedIndices );

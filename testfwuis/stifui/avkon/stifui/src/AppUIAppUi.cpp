@@ -667,13 +667,19 @@ CStartedTestCase* CAppUIAppUi::GetStartedTestCase( )
  */
 void CAppUIAppUi::SaveFocusPosition(TAppUIViewNumber aViewId, TInt aPosition)
 	{
+    TInt err;
 	if(!iPreviousPositionListValid)
 		{
 		return;
 		}
 	for(TInt counter = iPreviousFocusPosition.Count(); counter <= aViewId; counter++)
 		{
-		iPreviousFocusPosition.Append(0);
+		err = iPreviousFocusPosition.Append(0);
+		if (err != KErrNone)
+		    {
+            iLogger->Log(_L("Previous position was not saved correctly"));
+		
+		    }
 		}
 	iPreviousFocusPosition[aViewId] = aPosition;
 	}

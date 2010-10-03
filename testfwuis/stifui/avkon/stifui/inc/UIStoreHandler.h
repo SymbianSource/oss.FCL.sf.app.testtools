@@ -93,6 +93,11 @@ class CUIStoreHandler
         void Update( CStartedTestCase* aTestCase, TInt aStatus );
 
     public:     // Functions from base classes
+	        virtual TInt PopupMsg( const TDesC&  aLine1, 
+                               const TDesC&  aLine2, 
+                               TInt  aTimeInSecs,
+                               TKeyCode&  aKey,
+                               TRequestStatus&  aStatus  );
 
     protected:  // New functions
 
